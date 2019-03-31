@@ -1,0 +1,11 @@
+/*
+Да, действительно, можно создавать любые названия, которые также 
+являются служебными, с помощью `служебное слово`.
+*/
+
+update students as s 
+set passed = 1
+where (select sum(score) 
+from exams as e 
+where e.name = s.name) > 10
+and (s.group = 2 or s.group = 3);
